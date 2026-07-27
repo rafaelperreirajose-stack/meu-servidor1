@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Fire - Login Sucesso</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="login-box">
+      <div class="logo">
+        <h1>🔥 FREE FIRE</h1>
+        <p class="version">v1.19.0 - 2018</p>
+      </div>
+
+      <div class="login-content">
+        <h2>✓ Login Realizado!</h2>
+        <p>Bem-vindo ao servidor de autenticação</p>
+
+        <div class="user-info-box">
+          <img id="avatar" src="" alt="Avatar" class="avatar-small">
+          <h3 id="username">Carregando...</h3>
+          <p id="email">-</p>
+        </div>
+
+        <a href="/" class="btn-github" style="background: #4CAF50; border-color: #4CAF50;">
+          ✓ Voltar para Home
+        </a>
+      </div>
+
+      <footer>
+        <p>© 2018-2024 Free Fire</p>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    // Pegar dados do usuário da URL
+    const params = new URLSearchParams(window.location.search);
+    const userJson = params.get('user');
+    
+    if (userJson) {
+      try {
+        const usuario = JSON.parse(userJson);
+        document.getElementById('username').textContent = usuario.nome || usuario.username;
+        document.getElementById('email').textContent = usuario.email;
+        document.getElementById('avatar').src = usuario.avatar;
+      } catch (e) {
+        console.error('Erro ao parsear usuário:', e);
+      }
+    }
+  </script>
+</body>
+</html>
